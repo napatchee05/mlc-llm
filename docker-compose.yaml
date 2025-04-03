@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  mlc-llm:
+    cpu_shares: 4096
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mlc-llm-image
+    volumes:
+      - .:/workspace/mlc-llm
+    working_dir: /workspace/mlc-llm
+    stdin_open: true
+    tty: true

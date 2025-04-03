@@ -10,6 +10,7 @@ logging.enable_logging()
 
 def main():
     """Entrypoint of all CLI commands from MLC LLM"""
+    print("HELLO WORLD IM HERE")
     parser = ArgumentParser("MLC LLM Command Line Interface.")
     parser.add_argument(
         "subcommand",
