@@ -136,7 +136,7 @@ def main(args: argparse.argparse.Namespace):
 
     def _main():
         tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
-        dataset = create_dataset(args, tokenizer)
+        dataset = create_dataset(args, tokenizer, args.dataset_limit)
         f_create_api_endpoint = functools.partial(create_api_endpoint, args)
         pipelines = create_pipelines(args, f_create_api_endpoint, dataset)
         reports = []
@@ -188,6 +188,12 @@ if __name__ == "__main__":
         "--dataset-path",
         type=str,
         help="The dataset file path.",
+    )
+    parser.add_argument(
+        "--dataset-limit",
+        type=int,
+        default=None,
+        help="Limit the number of entries loaded from the dataset. Default is no limit.",
     )
     parser.add_argument(
         "--api-endpoint",
